@@ -1,0 +1,84 @@
+
+Frankline Owino
+
+
+
+# 1.Creates the vector clt where to store the results
+clt = c();
+ mu = 0; sigma = 1
+#the mean and standard deviation of a standard normal distribution for(i in 1:200)
+ # for each i between 1 to 200, it creates a random number
+{
+  # generate random data of size 10 
+X = rnorm(10,mu,sigma)    
+# stores in the vector clt as the ith entry
+ clt [i] = (mean(X) - mu)/(sigma/sqrt(10))
+}
+#lets the results be viewed as a histogram
+ hist(clt,prob=T)
+#The above program generated a histogram of samples of size 10 of random numbers between 1
+# to 200. This histogram is skewed left seems to have come from a population that is not normal
+
+# 2.Creates the vector clt where to store the results
+clt = c();
+mu = 0; sigma = 1 
+# the mean and standard deviation of a standard normal distribution 
+ # for(i in 1:200) for each i between 1 to 200, it creates a random number
+{
+  # generate random data of size 1000
+X = rnorm(1000,mu,sigma) 
+# stores in the vector clt as the ith entry
+ clt [i] = (mean(X) - mu)/(sigma/sqrt(1000))
+ }
+#lets the results be viewed as a histogram
+ hist(clt,prob=T)
+# This code is the same as the previous one the difference being that it generates samples of size 1000
+# of random numbers between 1 to 200. This histogram is very symmetrical and demonstrates the CLT
+# that as the sample size increases, the sampling distribution becomes approximately normal no matter the 
+# shape the population distribution has as long as the standard deviation is finite.
+
+
+#3. Create the exponential distribution
+# set seed for reproducibility
+set.seed(10) 
+lambda <- 0.2 # set lambda to 0.2
+# 40 samples
+n <- 40 
+# 1000 simulations
+sim <- 1000 
+# run simulations
+sim_exp <- replicate(sim, rexp(n, lambda)) 
+# calculate mean of exponentials
+means_exp <- apply(sim_exp, 2, mean) 
+# Histogram of the mean of each simulation
+hist(means_exp, xlab = "mean", main = "Means of the Exponential Function Simulations",
+     xlim = c(0, 10), breaks = 20)
+# graphs the line through the center of the histogram
+abline(v = mean(means_exp))
+abline(v = 1/lambda)
+#The above program generated a histogram of the 1000 simulations of the means of exponential function samples of 
+# size 40. This histogram is skewed left seems to have come from a population that is not normal
+
+
+# 4.Create the exponential distribution
+# set seed for reproducibility
+set.seed(10)  
+# set lambda to 0.2
+lambda <- 0.2 
+# 100 samples
+n <- 100 
+# 1000 simulations
+sim <- 1000 
+ # run simulations
+sim_exp <- replicate(sim, rexp(n, lambda))
+# calculate mean of exponentials
+means_exp <- apply(sim_exp, 2, mean) 
+# Histogram of the mean of each simulation
+hist(means_exp, xlab = "mean", main = "Means of the Exponential Function Simulations",
+     xlim = c(0, 10), breaks = 20)
+# graphs the line through the center of the histogram
+abline(v = mean(means_exp))
+abline(v = 1/lambda)
+# The above program generated a histogram of the 1000 simulations of the means of exponential function samples of 
+# size 100 .This histogram is very symmetrical and demonstrates the CLT that as the sample size increases, 
+# the sampling distribution becomes approximately normal no matter the shape the population distribution
